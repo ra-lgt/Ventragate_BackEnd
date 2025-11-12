@@ -8,7 +8,7 @@ export const getTasks = async (req, res, next) => {
       data: tasks,
     });
   } catch (error) {
-    next(error);
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
@@ -48,7 +48,7 @@ export const updateTask = async (req, res, next) => {
       .status(200)
       .json({ success: true, message: "Task updated successfully",data:updatedTask });
   } catch (error) {
-    next(error);
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
@@ -64,7 +64,7 @@ export const deleteTask = async (req, res, next) => {
       .status(200)
       .json({ success: true, message: "Task deleted successfully" });
   } catch (error) {
-    next(error);
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
@@ -89,6 +89,6 @@ export const updateStatus = async (req, res, next) => {
       task,
     });
   } catch (error) {
-    next(error);
+    res.status(500).json({ success: false, message: error.message });
   }
 };
